@@ -10,8 +10,12 @@ body {
 }  
 
 #header {
-	background-image: url(/images/mycompany_header.jpg);
-	color: #283F4B;
+	/*background-image: url(/images/mycompany_header.jpg);	*/
+	background-color: #BED6E3;
+	background-image: url(/images/ioa/ioa_header.png);
+    background-position: center top;
+	background-repeat: no-repeat;
+/*	color: #283F4B; */	
 	height: 164px;
 }
 

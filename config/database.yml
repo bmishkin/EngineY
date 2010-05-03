@@ -1,42 +1,16 @@
-
-#production:
-#    adapter: mysql
-#    database: enginey_production
-#    username: timothyf
-#    password: 
-#    host: db.fisherfamily.com
-
 # MYSQL
 development:
   adapter: mysql
   database: enginey_development
   username: root
-  password:  
+  password: r00by 
   host: localhost
 
 test:
   adapter: mysql
   database: enginey_test
   username: root
-  password:  
+  password: r00by 
   host: localhost
   
-
-# POSTGRES
-#development:
-#  adapter: postgresql
-#  database: enginey_development
-#  username: postgres
-#  password: postgres
-#  host: localhost
-#  encoding: UTF8
-
-#test:
-#  adapter: postgresql
-#  database: enginey_test
-#  username: postgres
-#  password: postgres
-#  host: localhost
-#  encoding: UTF8
-
 

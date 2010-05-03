@@ -372,6 +372,7 @@ class AdminController < ApplicationController
   
   # Used to display the current Analytics code
   def analytics_code
+    # BJM: should be changed to find_by_title, I think. content_id noexist.
     if HtmlContent.find_by_content_id('analytics')
       @analytics = HtmlContent.find_by_content_id('analytics')
     else
