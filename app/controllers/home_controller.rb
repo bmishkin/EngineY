@@ -38,6 +38,9 @@ class HomeController < ApplicationController
                           :organization => params[:network_org],
                           :website => params[:network_website],
                           :description => params[:network_desc])
+                
+    # set default configuration settings          
+    Configuration.create_defaults
           
     User.destroy_all                     
     user1 = User.new :first_name=>params[:first_name],
@@ -76,8 +79,8 @@ class HomeController < ApplicationController
       redirect_to :action => 'install'
     else
       @section = 'MAIN'
-      @page_name = 'home' 
-      @page = Page.find_by_title('home')
+      @page = Page.find_by_name('home')
+      @user = current_user
       @photos = Photo.find(:all, :limit=>6, 
                            :select=>'id, parent_id, filename', 
                            :order => Photo.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()',

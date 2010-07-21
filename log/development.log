@@ -9779,3 +9779,1323 @@ Rendering widgets/html_content_home
   [4;35;1mRole Load (0.8ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
   [4;36;1mRole Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
 Completed in 143ms (View: 65, DB: 26) | 200 OK [http://localhost/widget_layouts/load?layout_id=12&name=html_content_home&authenticity_token=Lm6WeLQNRHq0iBLwF4i%2FyXVoI2dXcU%2Fq%2B08dFOqd7KI%3D]
+** acts_as_taggable_on: initialized properly.
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (69.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (125.1ms)[0m   [0;1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (61.5ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090116160747)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (23.7ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime, `login` varchar(255), `email` varchar(255), `email_hash` varchar(255), `first_name` varchar(255), `last_name` varchar(255), `sex` varchar(255), `city` varchar(255), `state_id` int(11), `zip` varchar(255), `country_id` int(11), `phone` varchar(255), `phone2` varchar(255), `time_zone` varchar(255) DEFAULT 'UTC', `about_me` text, `organization` varchar(255), `skills` text, `occupation` text, `featured` tinyint(1) DEFAULT 0, `show_blog_posts_on_home` tinyint(1) DEFAULT 1, `use_gravatar` tinyint(1) DEFAULT 0, `website` varchar(255), `blog` varchar(255), `blog_feed` varchar(255), `flickr` varchar(255), `flickr_username` varchar(255), `linked_in_url` varchar(255), `twitter_id` varchar(255), `display_tweets` tinyint(1) DEFAULT 0, `aim_name` varchar(255), `gtalk_name` varchar(255), `yahoo_messenger_name` varchar(255), `msn_name` varchar(255), `youtube_username` varchar(255), `skype_name` varchar(255), `facebook_url` varchar(255), `facebook_id` int(11), `resume_url` varchar(255), `company_url` varchar(255), `posts_count` int(11) DEFAULT 0, `last_seen_at` datetime, `login_count` int(11) DEFAULT 0, `crypted_password` varchar(40), `salt` varchar(40), `remember_token` varchar(255), `remember_token_expires_at` datetime, `activation_code` varchar(40), `activated_at` datetime, `password_reset_code` varchar(40), `enabled` tinyint(1) DEFAULT 1, `is_active` tinyint(1) DEFAULT 0, `identity_url` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090116160747')[0m
+Migrating to CreateProfiles (20090116161501)
+  [4;35;1mSQL (47.5ms)[0m   [0mCREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090116161501')[0m
+Migrating to CreateMessages (20090116161755)
+  [4;35;1mSQL (12.7ms)[0m   [0mCREATE TABLE `messages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `subject` varchar(255), `body` text, `sender_id` int(11), `recipient_id` int(11), `read` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090116161755')[0m
+Migrating to CreatePhotos (20090116162559)
+  [4;35;1mSQL (10.3ms)[0m   [0mCREATE TABLE `photos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `group_id` int(11), `event_id` int(11), `title` varchar(255), `description` text, `location` varchar(255), `parent_id` int(11), `content_type` varchar(255), `filename` varchar(255), `thumbnail` varchar(255), `size` int(11), `width` int(11), `height` int(11), `is_profile` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090116162559')[0m
+Migrating to CreateActivities (20090116165201)
+  [4;35;1mSQL (8.9ms)[0m   [0mCREATE TABLE `activities` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `public` tinyint(1), `item_id` int(11), `item_type` varchar(255), `action` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090116165201')[0m
+Migrating to CreateRoles (20090116171953)
+  [4;35;1mSQL (10.2ms)[0m   [0mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `rolename` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090116171953')[0m
+Migrating to CreatePermissions (20090116172007)
+  [4;35;1mSQL (9.0ms)[0m   [0mCREATE TABLE `permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `role_id` int(11), `group_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090116172007')[0m
+Migrating to CreateContentPages (20090116173325)
+  [4;35;1mSQL (9.8ms)[0m   [0mCREATE TABLE `content_pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090116173325')[0m
+Migrating to CreateWidgets (20090116174907)
+  [4;35;1mSQL (9.8ms)[0m   [0mCREATE TABLE `widgets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `title` varchar(255), `body` text, `active` tinyint(1), `page_order` int(11), `path` varchar(255), `index_url` varchar(255), `col_num` int(11), `menu_item` tinyint(1), `protected` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090116174907')[0m
+Migrating to CreateGroups (20090116191446)
+  [4;35;1mSQL (8.8ms)[0m   [0mCREATE TABLE `groups` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `photo_id` int(11), `creator_id` int(11), `featured` tinyint(1), `announcements` text, `private` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090116191446')[0m
+Migrating to CreateBlogPosts (20090116192816)
+  [4;35;1mSQL (10.0ms)[0m   [0mCREATE TABLE `blog_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `title` varchar(255), `body` text, `parent_id` int(11), `published` tinyint(1), `featured` tinyint(1), `summary` text, `url` varchar(255), `published_at` datetime, `guid` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090116192816')[0m
+Migrating to CreateVideos (20090119154736)
+  [4;35;1mSQL (9.5ms)[0m   [0mCREATE TABLE `videos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090119154736')[0m
+Migrating to CreatePages (20090119155135)
+  [4;35;1mSQL (9.9ms)[0m   [0mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `permalink` varchar(255), `body` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090119155135')[0m
+Migrating to CreateMemberships (20090119160430)
+  [4;35;1mSQL (9.9ms)[0m   [0mCREATE TABLE `memberships` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `group_id` int(11), `role_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090119160430')[0m
+Migrating to CreateStates (20090119171424)
+  [4;35;1mSQL (9.7ms)[0m   [0mCREATE TABLE `states` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `abbreviation` varchar(255), `country_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090119171424')[0m
+Migrating to CreateCountries (20090119171439)
+  [4;35;1mSQL (13.0ms)[0m   [0mCREATE TABLE `countries` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `abbreviation` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090119171439')[0m
+Migrating to CreateFriendships (20090120182623)
+  [4;35;1mSQL (9.2ms)[0m   [0mCREATE TABLE `friendships` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `friend_id` int(11), `status` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090120182623')[0m
+Migrating to CreateEvents (20090122190843)
+  [4;35;1mSQL (24.5ms)[0m   [0mCREATE TABLE `events` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `user_id` int(11), `photo_id` int(11), `description` text, `event_type` varchar(255), `start_time` datetime, `end_time` datetime, `location` varchar(255), `street` varchar(255), `city` varchar(255), `website` varchar(255), `phone` varchar(255), `organized_by` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090122190843')[0m
+Migrating to CreateWallPosts (20090129183023)
+  [4;35;1mSQL (10.2ms)[0m   [0mCREATE TABLE `wall_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `group_id` int(11), `event_id` int(11), `sender_id` int(11), `message` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090129183023')[0m
+Migrating to CreateForumPosts (20090129192945)
+  [4;35;1mSQL (20.8ms)[0m   [0mCREATE TABLE `forum_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `title` varchar(255), `body` text, `parent_id` int(11), `forum_topic_id` int(11), `featured` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090129192945')[0m
+Migrating to CreateFeeds (20090203220718)
+  [4;35;1mSQL (42.7ms)[0m   [0mCREATE TABLE `feeds` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090203220718')[0m
+Migrating to CreateHtmlContents (20090205221617)
+  [4;35;1mSQL (11.9ms)[0m   [0mCREATE TABLE `html_contents` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `widget_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090205221617')[0m
+Migrating to CreateSessions (20090206031415)
+  [4;35;1mSQL (9.6ms)[0m   [0mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (14.4ms)[0m   [0;1mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [4;35;1mSQL (39.0ms)[0m   [0mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090206031415')[0m
+Migrating to ModifySessions (20090206034820)
+  [4;35;1mSQL (14.8ms)[0m   [0mALTER TABLE `sessions` ADD `user_id` int(11)[0m
+  [4;36;1mSQL (15.5ms)[0m   [0;1mALTER TABLE `sessions` ADD `last_url_visited` varchar(255)[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090206034820')[0m
+Migrating to CreateStatusPosts (20090206174233)
+  [4;36;1mSQL (10.1ms)[0m   [0;1mCREATE TABLE `status_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `body` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090206174233')[0m
+Migrating to CreateNetworks (20090206185148)
+  [4;36;1mSQL (9.7ms)[0m   [0;1mCREATE TABLE `networks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `organization` varchar(255), `website` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090206185148')[0m
+Migrating to CreatePhotoAlbums (20090206190209)
+  [4;36;1mSQL (11.5ms)[0m   [0;1mCREATE TABLE `photo_albums` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090206190209')[0m
+Migrating to CreateRssFeeds (20090209185842)
+  [4;36;1mSQL (9.0ms)[0m   [0;1mCREATE TABLE `rss_feeds` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `url` varchar(255), `user_id` int(11), `is_blog` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090209185842')[0m
+Migrating to CreateReplies (20090209220152)
+  [4;36;1mSQL (13.1ms)[0m   [0;1mCREATE TABLE `replies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `body` text, `user_id` int(11), `item_id` int(11), `item_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090209220152')[0m
+Migrating to CreateBookReviews (20090212221022)
+  [4;36;1mSQL (79.8ms)[0m   [0;1mCREATE TABLE `book_reviews` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `release_date` varchar(255), `publisher` varchar(255), `website` varchar(255), `buy_link` varchar(255), `review` text, `user_id` int(11), `image_url` varchar(255), `featured` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090212221022')[0m
+Migrating to CreateJobPosts (20090212222534)
+  [4;36;1mSQL (11.0ms)[0m   [0;1mCREATE TABLE `job_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `job_title` varchar(255), `job_id` varchar(255), `company` varchar(255), `website` varchar(255), `contact_name` varchar(255), `email` varchar(255), `description` text, `featured` tinyint(1), `end_date` date, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090212222534')[0m
+Migrating to CreateAnnouncements (20090216173509)
+  [4;36;1mSQL (11.4ms)[0m   [0;1mCREATE TABLE `announcements` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `user_id` int(11), `group_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090216173509')[0m
+Migrating to CreateForumTopics (20090216181231)
+  [4;36;1mSQL (10.4ms)[0m   [0;1mCREATE TABLE `forum_topics` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `user_id` int(11), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090216181231')[0m
+Migrating to CreateBugReports (20090220180912)
+  [4;36;1mSQL (16.8ms)[0m   [0;1mCREATE TABLE `bug_reports` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `browser` varchar(255), `user_id` int(11), `description` text, `module` varchar(255), `resolved` tinyint(1) DEFAULT 0, `comment` text, `resolution_date` date, `priority` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090220180912')[0m
+Migrating to ActsAsTaggableOnMigration (20090226213342)
+  [4;36;1mSQL (9.3ms)[0m   [0;1mCREATE TABLE `tags` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (9.4ms)[0m   [0mCREATE TABLE `taggings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `tag_id` int(11), `taggable_id` int(11), `tagger_id` int(11), `tagger_type` varchar(255), `taggable_type` varchar(255), `context` varchar(255), `created_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (39.0ms)[0m   [0;1mCREATE INDEX `index_taggings_on_tag_id` ON `taggings` (`tag_id`)[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mCREATE INDEX `index_taggings_on_taggable_id_and_taggable_type_and_context` ON `taggings` (`taggable_id`, `taggable_type`, `context`)[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090226213342')[0m
+Migrating to CreateThemes (20090530170040)
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (11.0ms)[0m   [0;1mCREATE TABLE `themes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090530170040')[0m
+Migrating to CreateDomainThemes (20090606153236)
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (10.3ms)[0m   [0mCREATE TABLE `domain_themes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `uri` varchar(255), `name` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (15.4ms)[0m   [0;1mCREATE INDEX `index_domain_themes_on_uri` ON `domain_themes` (`uri`)[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090606153236')[0m
+Migrating to CreateBlogMirrors (20090609211245)
+  [4;36;1mSQL (9.6ms)[0m   [0;1mCREATE TABLE `blog_mirrors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `url` varchar(255), `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090609211245')[0m
+Migrating to CreateAttendances (20090710182653)
+  [4;36;1mSQL (15.0ms)[0m   [0;1mCREATE TABLE `attendances` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `attendee_id` int(11), `event_id` int(11), `status` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090710182653')[0m
+Migrating to CreateInvites (20090713185659)
+  [4;36;1mSQL (11.0ms)[0m   [0;1mCREATE TABLE `invites` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `group_id` int(11), `email` varchar(255), `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090713185659')[0m
+Migrating to CreateLinks (20090810193828)
+  [4;36;1mSQL (13.1ms)[0m   [0;1mCREATE TABLE `links` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `title` varchar(255), `url` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (5.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090810193828')[0m
+Migrating to AddEmailOptInToUser (20091012011206)
+  [4;36;1mSQL (17.2ms)[0m   [0;1mALTER TABLE `users` ADD `receive_emails` tinyint(1) DEFAULT 1[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091012011206')[0m
+Migrating to CreateProjects (20091013205203)
+  [4;36;1mSQL (42.7ms)[0m   [0;1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `url` varchar(255), `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091013205203')[0m
+Migrating to CreateComments (20091019212027)
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (11.0ms)[0m   [0mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(50) DEFAULT '', `comment` varchar(255) DEFAULT '', `commentable_id` int(11) DEFAULT 0 NOT NULL, `commentable_type` varchar(15) DEFAULT '' NOT NULL, `user_id` int(11) DEFAULT 0 NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (35.0ms)[0m   [0;1mCREATE INDEX `fk_comments_user` ON `comments` (`user_id`)[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091019212027')[0m
+Migrating to CreateClassifieds (20091026183009)
+  [4;36;1mSQL (11.4ms)[0m   [0;1mCREATE TABLE `classifieds` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` varchar(255), `user_id` int(11), `classified_category_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091026183009')[0m
+Migrating to CreateClassifiedCategories (20091026184522)
+  [4;36;1mSQL (20.3ms)[0m   [0;1mCREATE TABLE `classified_categories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091026184522')[0m
+Migrating to ModifyForumPosts (20091106205213)
+  [4;36;1mSQL (15.3ms)[0m   [0;1mALTER TABLE `forum_posts` ADD `views` int(11) DEFAULT 0[0m
+  [4;35;1mSQL (18.0ms)[0m   [0mALTER TABLE `blog_posts` ADD `views` int(11) DEFAULT 0[0m
+  [4;36;1mSQL (15.8ms)[0m   [0;1mALTER TABLE `photos` ADD `views` int(11) DEFAULT 0[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091106205213')[0m
+Migrating to ModifyHtmlContents (20091110220622)
+  [4;36;1mSQL (16.8ms)[0m   [0;1mALTER TABLE `html_contents` ADD `content_id` varchar(255)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091110220622')[0m
+Migrating to ModifyPhotoAlbums (20091124145508)
+  [4;36;1mSQL (15.6ms)[0m   [0;1mALTER TABLE `photo_albums` ADD `view_count` int(11)[0m
+  [4;35;1mSQL (16.5ms)[0m   [0mALTER TABLE `photo_albums` ADD `title` varchar(255)[0m
+  [4;36;1mSQL (17.1ms)[0m   [0;1mALTER TABLE `photo_albums` ADD `description` text[0m
+  [4;35;1mSQL (17.6ms)[0m   [0mALTER TABLE `photo_albums` ADD `user_id` int(11)[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091124145508')[0m
+Migrating to ModifyPhotos (20091124145525)
+  [4;35;1mSQL (40.6ms)[0m   [0mALTER TABLE `photos` ADD `view_count` int(11)[0m
+  [4;36;1mSQL (18.3ms)[0m   [0;1mALTER TABLE `photos` ADD `photo_album_id` int(11)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091124145525')[0m
+Migrating to ModifyInvites (20091125201654)
+  [4;36;1mSQL (16.5ms)[0m   [0;1mALTER TABLE `invites` DROP `group_id`[0m
+  [4;35;1mSQL (15.5ms)[0m   [0mALTER TABLE `invites` ADD `message` text[0m
+  [4;36;1mSQL (16.4ms)[0m   [0;1mALTER TABLE `invites` ADD `invite_code` varchar(255)[0m
+  [4;35;1mSQL (17.0ms)[0m   [0mALTER TABLE `invites` ADD `accepted` tinyint(1)[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091125201654')[0m
+Migrating to CreateIdeas (20091204193534)
+  [4;35;1mSQL (11.2ms)[0m   [0mCREATE TABLE `ideas` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091204193534')[0m
+Migrating to CreateFacebookPosts (20091229154645)
+  [4;35;1mSQL (86.9ms)[0m   [0mCREATE TABLE `facebook_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091229154645')[0m
+Migrating to AddApiKeyToUsers (20100218042049)
+  [4;35;1mSQL (17.6ms)[0m   [0mALTER TABLE `users` ADD `api_key` varchar(40) DEFAULT ''[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100218042049')[0m
+Migrating to PopulateCountriesAndStates (20100226204420)
+  [4;35;1mCountry Load (13.0ms)[0m   [0mSELECT * FROM `countries` LIMIT 1[0m
+  [4;36;1mCountry Columns (54.4ms)[0m   [0;1mSHOW FIELDS FROM `countries`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('United States', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'US')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Andorra', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AD')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('United Arab Emirates', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AE')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Afghanistan', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AF')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Antigua and Barbuda', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AG')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Anguilla', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AI')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Albania', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AL')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Armenia', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AM')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Netherlands Antilles', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AN')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Angola', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AO')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Antarctica', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AQ')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Argentina', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AR')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('American Samoa', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AS')[0m
+  [4;35;1mSQL (40.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Austria', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AU')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Australia', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AS')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Aruba', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AW')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Azerbaijan', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'AZ')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Bosnia and Herzegovina', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'BA')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Barbados', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'BB')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Bangladesh', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'BD')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Belgium', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'BE')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Burkina Faso', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'BF')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Bahrain', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'BH')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Burundi', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'BI')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Benin', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'BJ')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Bermuda', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'BM')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Bolivia', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'BO')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Brazil', '2010-07-21 17:42:46', '2010-07-21 17:42:46', 'BR')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.4ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Bahamas', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'BS')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Bhutan', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'BT')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Bouvet Island', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'BU')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Bulgaria', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'BV')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Botswana', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'BW')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Brunei Darussalam', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'BX')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Belarus', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'BY')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Belize', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'BZ')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Canada', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CA')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Cocos (Keeling) Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CC')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Central African Republic', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CF')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Congo', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CG')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Switzerland', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CH')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Cote D\'Ivoire (Ivory Coast)', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CI')[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Cook Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CK')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Chile', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CL')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Cameroon', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CM')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('China', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CN')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Colombia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CO')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Costa Rica', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CR')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Cuba', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CU')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Cape Verde', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CV')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Christmas Island', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CX')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Cyprus', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CY')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Czech Republic', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'CZ')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Germany', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'DE')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Djibouti', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'DJ')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Denmark', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'DK')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Dominica', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'DM')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Dominican Republic', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'DO')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Algeria', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'DZ')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (9.1ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Ecuador', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'EC')[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Estonia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'EE')[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.3ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Egypt', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'EG')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.5ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Western Sahara', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'EH')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.4ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Eritrea', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'ER')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Spain', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'ES')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Ethiopia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'ET')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Finland', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'FI')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.4ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Fiji', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'FJ')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Falkland Islands (Malvinas)', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'FK')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Micronesia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'FM')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Faroe Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'FO')[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('France', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'FR')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Gabon', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GA')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Great Britain (UK)', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GB')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Grenada', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GD')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Georgia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GE')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('French Guiana', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GF')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Ghana', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GH')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Gibraltar', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GI')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Greenland', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GL')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Gambia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GM')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Guinea', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GN')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Guadeloupe', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GP')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Equatorial Guinea', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GQ')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Greece', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GR')[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('South Georgia and South Sandwich Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GS')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Guatemala', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GT')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Guam', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GU')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Guinea-Bissau', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GW')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.3ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Guyana', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'GY')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Hong Kong', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'HK')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Heard and McDonald Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'HM')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Honduras', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'HN')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Croatia and Hrvatska', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'HR')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Haiti', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'HT')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Hungary', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'HU')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Indonesia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'ID')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.3ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Ireland', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'IE')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Israel', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'IL')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('India', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'IN')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('British Indian Ocean Territory', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'IO')[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.3ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Iraq', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'IQ')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Iran', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'IR')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Iceland', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'IS')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Italy', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'IT')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Jamaica', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'JM')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Jordan', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'JO')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Japan', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'JP')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Kenya', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'KE')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Kyrgyzstan', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'KG')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Cambodia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'KH')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Kiribati', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'KI')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Comoros', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'KM')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Saint Kitts and Nevis', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'KN')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Korea North', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'KP')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Korea South', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'KR')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Kuwait', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'KW')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Cayman Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'KY')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Kazakhstan', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'KZ')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Laos', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'LA')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Lebanon', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'LB')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Saint Lucia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'LC')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Liechtenstein', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'LI')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Sri Lanka', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'LK')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Liberia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'LR')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Lesotho', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'LS')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Lithuania', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'LT')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Luxembourg', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'LU')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Latvia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'LV')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Libya', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'LY')[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Morocco', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MA')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Monaco', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MC')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.4ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Moldova', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MD')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Madagascar', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MG')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Marshall Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MH')[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Macedonia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MK')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Mali', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'ML')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Myanmar', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MM')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Mongolia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MN')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Macau', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MO')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Northern Mariana Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MP')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Martinique', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MQ')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Mauritania', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MR')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Montserrat', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MS')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Malta', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MT')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Mauritius', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MU')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Maldives', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MV')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Malawi', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MW')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Mexico', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MX')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Malaysia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MY')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Mozambique', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'MZ')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Namibia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NA')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('New Caledonia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NC')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Niger', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NE')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Norfolk Island', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NF')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Nigeria', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NG')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Nicaragua', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NI')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.3ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Netherlands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NE')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Norway', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NO')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Nepal', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NP')[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.4ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Nauru', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NR')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Niue', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NU')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('New Zealand', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'NZ')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Oman', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'OM')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Panama', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PA')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Peru', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PE')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('French Polynesia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PF')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Papua New Guinea', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PG')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Philippines', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PH')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Pakistan', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PK')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Poland', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PO')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('St. Pierre and Miquelon', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PM')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Pitcairn', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PN')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Puerto Rico', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PR')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Portugal', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PT')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Palau', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PW')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Paraguay', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'PY')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Qatar', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'QA')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Reunion', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'RE')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.3ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Romania', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'RO')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Russian Federation', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'RU')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Rwanda', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'RW')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Saudi Arabia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SA')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Solomon Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SB')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Seychelles', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SC')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Sudan', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SD')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Sweden', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SE')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Singapore', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SG')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('St. Helena', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SH')[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.4ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Slovenia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SI')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Svalbard and Jan Mayen Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SJ')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Slovak Republic', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SK')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Sierra Leone', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SL')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('San Marino', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SM')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Senegal', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SN')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Somalia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SO')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Suriname', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SR')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Sao Tome and Principe', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'ST')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('El Salvador', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SV')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Syria', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SY')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Swaziland', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'SZ')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Turks and Caicos Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TC')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Chad', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TD')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('French Southern Territories', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TF')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Togo', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TG')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Thailand', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TH')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Tajikistan', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TI')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Tokelau', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TK')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Turkmenistan', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TM')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Tunisia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TN')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Tonga', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TO')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('East Timor', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TP')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Turkey', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TR')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Trinidad and Tobago', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TT')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Tuvalu', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TV')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Taiwan', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TW')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Tanzania', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'TZ')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Ukraine', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'UA')[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Uganda', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'UG')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('United Kingdom', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'UK')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.4ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('US Minor Outlying Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'UM')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Uruguay', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'UY')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.4ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Uzbekistan', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'UZ')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Vatican City State', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'VA')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Saint Vincent and the Grenadines', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'VC')[0m
+  [4;35;1mSQL (19.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Venezuela', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'VE')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Virgin Islands (British)', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'VG')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Viet Nam', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'VN')[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Vanuatu', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'VU')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Wallis and Futuna Islands', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'WF')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Samoa', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'WS')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Yemen', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'YE')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Mayotte', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'YT')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.3ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Yugoslavia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'YU')[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.3ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('South Africa', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'ZA')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Zambia', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'ZM')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCountry Create (0.2ms)[0m   [0;1mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Zaire', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'ZR')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCountry Create (0.2ms)[0m   [0mINSERT INTO `countries` (`name`, `created_at`, `updated_at`, `abbreviation`) VALUES('Zimbabwe', '2010-07-21 17:42:47', '2010-07-21 17:42:47', 'ZW')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mState Load (0.6ms)[0m   [0mSELECT * FROM `states` LIMIT 1[0m
+  [4;36;1mCountry Load (87.3ms)[0m   [0;1mSELECT * FROM `countries` WHERE (`countries`.`abbreviation` = 'US') LIMIT 1[0m
+  [4;35;1mState Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `states`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.3ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('ALASKA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'AK')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('ALABAMA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'AL')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.3ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('ARKANSAS', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'AR')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('AMERICAN SAMOA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'AS')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('ARIZONA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'AZ')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('CALIFORNIA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'CA')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('COLORADO', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'CO')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('CONNECTICUT', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'CT')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('DISTRICT OF COLUMBIA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'DC')[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('WASHINGTON, DC', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'DC')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('DELAWARE', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'DE')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('FLORIDA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'FL')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('FEDERATED STATES OF MICRONESIA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'FM')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('GEORGIA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'GA')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('GUAM', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'GU')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('HAWAII', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'HI')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.3ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('IOWA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'IA')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('IDAHO', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'ID')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.3ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('ILLINOIS', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'IL')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('INDIANA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'IN')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('KANSAS', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'KS')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('KENTUCKY', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'KY')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('LOUISIANA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'LA')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('MASSACHUSETTS', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'MA')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('MARYLAND', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'MD')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('MAINE', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'ME')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('MARSHALL ISLANDS', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'MH')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('MICHIGAN', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'MI')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('MINNESOTA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'MN')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('MISSOURI', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'MO')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('NORTHERN MARIANA ISLANDS', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'MP')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('MISSISSIPPI', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'MS')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('MONTANA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'MT')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('NORTH CAROLINA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'NC')[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('NORTH DAKOTA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'ND')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('NEBRASKA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'NE')[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('NEW HAMPSHIRE', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'NH')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('NEW JERSEY', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'NJ')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.3ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('NEW MEXICO', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'NM')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('NEVADA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'NV')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('NEW YORK', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'NY')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('OHIO', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'OH')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('OKLAHOMA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'OK')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('OREGON', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'OR')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('PENNSYLVANIA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'PA')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('PUERTO RICO', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'PR')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('PALAU', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'PW')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('RHODE ISLAND', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'RI')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('SOUTH CAROLINA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'SC')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('SOUTH DAKOTA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'SD')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('TENNESSEE', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'TN')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('TEXAS', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'TX')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('UTAH', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'UT')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('VIRGINIA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'VA')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('VIRGIN ISLANDS', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'VI')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('VERMONT', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'VT')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('WASHINGTON', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'WA')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.2ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('WISCONSIN', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'WI')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mState Create (0.2ms)[0m   [0mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('WEST VIRGINIA', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'WV')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mState Create (0.3ms)[0m   [0;1mINSERT INTO `states` (`name`, `created_at`, `updated_at`, `country_id`, `abbreviation`) VALUES('WYOMING', '2010-07-21 17:42:48', '2010-07-21 17:42:48', 1, 'WY')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100226204420')[0m
+Migrating to CreateFollows (20100306050247)
+  [4;35;1mSQL (13.5ms)[0m   [0mCREATE TABLE `follows` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `follower_id` int(11), `followee_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100306050247')[0m
+Migrating to ModifyActivities (20100309211720)
+  [4;35;1mSQL (3.5ms)[0m   [0mSHOW FIELDS FROM `activities`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW FIELDS FROM `activities`[0m
+  [4;35;1mSQL (19.3ms)[0m   [0mALTER TABLE `activities` CHANGE `public` `public` tinyint(1) DEFAULT 1[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100309211720')[0m
+Migrating to CreateLayouts (20100319185852)
+  [4;35;1mSQL (11.9ms)[0m   [0mCREATE TABLE `layouts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `widget_id` int(11), `col_num` int(11), `row_num` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100319185852')[0m
+Migrating to ModifyWidgets (20100319190001)
+  [4;35;1mSQL (15.7ms)[0m   [0mALTER TABLE `widgets` DROP `body`[0m
+  [4;36;1mSQL (14.7ms)[0m   [0;1mALTER TABLE `widgets` DROP `page_order`[0m
+  [4;35;1mSQL (17.9ms)[0m   [0mALTER TABLE `widgets` DROP `path`[0m
+  [4;36;1mSQL (14.7ms)[0m   [0;1mALTER TABLE `widgets` DROP `index_url`[0m
+  [4;35;1mSQL (15.4ms)[0m   [0mALTER TABLE `widgets` DROP `col_num`[0m
+  [4;36;1mSQL (15.1ms)[0m   [0;1mALTER TABLE `widgets` DROP `menu_item`[0m
+  [4;35;1mSQL (14.7ms)[0m   [0mALTER TABLE `widgets` ADD `html_content_id` int(11)[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100319190001')[0m
+Migrating to ModifyHtmlContentsAgain (20100319192210)
+  [4;35;1mSQL (14.6ms)[0m   [0mALTER TABLE `html_contents` DROP `widget_id`[0m
+  [4;36;1mSQL (15.7ms)[0m   [0;1mALTER TABLE `html_contents` DROP `content_id`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100319192210')[0m
+Migrating to CreateWidgetLayouts (20100319210113)
+  [4;36;1mSQL (12.4ms)[0m   [0;1mCREATE TABLE `widget_layouts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `widget_id` int(11), `col_num` int(11), `row_num` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100319210113')[0m
+Migrating to ModifyWidgetsAndLayoutsAndPages (20100322161553)
+  [4;36;1mSQL (15.4ms)[0m   [0;1mALTER TABLE `pages` DROP `body`[0m
+  [4;35;1mSQL (16.2ms)[0m   [0mALTER TABLE `pages` ADD `name` varchar(255)[0m
+  [4;36;1mSQL (17.3ms)[0m   [0;1mALTER TABLE `widgets` DROP `html_content_id`[0m
+  [4;35;1mSQL (14.7ms)[0m   [0mALTER TABLE `widgets` ADD `description` text[0m
+  [4;36;1mSQL (16.9ms)[0m   [0;1mALTER TABLE `widgets` ADD `profile` tinyint(1)[0m
+  [4;35;1mSQL (15.2ms)[0m   [0mALTER TABLE `widget_layouts` ADD `html_content_id` int(11)[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100322161553')[0m
+Migrating to CreateBlogPostTopics (20100326174110)
+  [4;35;1mSQL (11.2ms)[0m   [0mCREATE TABLE `blog_post_topics` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `name` varchar(255), `parent_id` int(11), `default` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (11.4ms)[0m   [0;1mCREATE TABLE `blog_post_topics_blog_posts` (`blog_post_id` int(11), `blog_post_topic_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100326174110')[0m
+Migrating to RemoveUnusedTables (20100608162220)
+  [4;36;1mSQL (1.9ms)[0m   [0;1mDROP TABLE `content_pages`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mDROP TABLE `layouts`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100608162220')[0m
+Migrating to CreateEyModules (20100608195539)
+  [4;35;1mSQL (11.8ms)[0m   [0mCREATE TABLE `ey_modules` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `active` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (14.3ms)[0m   [0;1mALTER TABLE `widgets` ADD `ey_module_id` int(11)[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100608195539')[0m
+Migrating to ModifyNetwork (20100618150950)
+  [4;36;1mSQL (15.6ms)[0m   [0;1mALTER TABLE `networks` ADD `url` varchar(255)[0m
+  [4;35;1mSQL (17.1ms)[0m   [0mALTER TABLE `networks` ADD `admin_email` varchar(255)[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100618150950')[0m
+Migrating to CreateNavItems (20100623185718)
+  [4;35;1mSQL (11.6ms)[0m   [0mCREATE TABLE `nav_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `title` varchar(255), `url` varchar(255), `login_required` tinyint(1), `login_allowed` tinyint(1), `admin_required` tinyint(1), `enabled` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100623185718')[0m
+Migrating to CreateConfigSettings (20100628192855)
+  [4;35;1mSQL (10.9ms)[0m   [0mCREATE TABLE `config_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `value` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100628192855')[0m
+Migrating to CreateLikes (20100707160333)
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (10.7ms)[0m   [0;1mCREATE TABLE `likes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `likable_id` int(11) NOT NULL, `likable_type` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (68.6ms)[0m   [0mCREATE INDEX `index_likable_type` ON `likes` (`likable_type`, `likable_id`)[0m
+  [4;36;1mSQL (16.9ms)[0m   [0;1mCREATE INDEX `fk_likes_user` ON `likes` (`user_id`)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100707160333')[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `activities`[0m
+  [4;36;1mSQL (3.6ms)[0m   [0;1mdescribe `activities`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mSHOW KEYS FROM `activities`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `announcements`[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mdescribe `announcements`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW KEYS FROM `announcements`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `attendances`[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mdescribe `attendances`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW KEYS FROM `attendances`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `blog_mirrors`[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mdescribe `blog_mirrors`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW KEYS FROM `blog_mirrors`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `blog_post_topics`[0m
+  [4;36;1mSQL (3.2ms)[0m   [0;1mdescribe `blog_post_topics`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW KEYS FROM `blog_post_topics`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `blog_post_topics_blog_posts`[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mdescribe `blog_post_topics_blog_posts`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW KEYS FROM `blog_post_topics_blog_posts`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `blog_posts`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mdescribe `blog_posts`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mSHOW KEYS FROM `blog_posts`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW FIELDS FROM `book_reviews`[0m
+  [4;35;1mSQL (3.2ms)[0m   [0mdescribe `book_reviews`[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mSHOW KEYS FROM `book_reviews`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `bug_reports`[0m
+  [4;36;1mSQL (3.7ms)[0m   [0;1mdescribe `bug_reports`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW KEYS FROM `bug_reports`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `classified_categories`[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mdescribe `classified_categories`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW KEYS FROM `classified_categories`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `classifieds`[0m
+  [4;36;1mSQL (4.2ms)[0m   [0;1mdescribe `classifieds`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW KEYS FROM `classifieds`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `comments`[0m
+  [4;35;1mSQL (3.6ms)[0m   [0mdescribe `comments`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW KEYS FROM `comments`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `config_settings`[0m
+  [4;36;1mSQL (3.4ms)[0m   [0;1mdescribe `config_settings`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW KEYS FROM `config_settings`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `countries`[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mdescribe `countries`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW KEYS FROM `countries`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `domain_themes`[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mdescribe `domain_themes`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW KEYS FROM `domain_themes`[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSHOW FIELDS FROM `events`[0m
+  [4;35;1mSQL (4.5ms)[0m   [0mdescribe `events`[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mSHOW KEYS FROM `events`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `ey_modules`[0m
+  [4;36;1mSQL (3.3ms)[0m   [0;1mdescribe `ey_modules`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW KEYS FROM `ey_modules`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `facebook_posts`[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mdescribe `facebook_posts`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW KEYS FROM `facebook_posts`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `feeds`[0m
+  [4;36;1mSQL (3.2ms)[0m   [0;1mdescribe `feeds`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW KEYS FROM `feeds`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `follows`[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mdescribe `follows`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW KEYS FROM `follows`[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mSHOW FIELDS FROM `forum_posts`[0m
+  [4;36;1mSQL (3.5ms)[0m   [0;1mdescribe `forum_posts`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW KEYS FROM `forum_posts`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mdescribe `forum_topics`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW KEYS FROM `forum_topics`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `friendships`[0m
+  [4;36;1mSQL (3.3ms)[0m   [0;1mdescribe `friendships`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW KEYS FROM `friendships`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSHOW FIELDS FROM `groups`[0m
+  [4;35;1mSQL (3.6ms)[0m   [0mdescribe `groups`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW KEYS FROM `groups`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mSHOW FIELDS FROM `html_contents`[0m
+  [4;36;1mSQL (3.8ms)[0m   [0;1mdescribe `html_contents`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW KEYS FROM `html_contents`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `ideas`[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mdescribe `ideas`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW KEYS FROM `ideas`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `invites`[0m
+  [4;36;1mSQL (3.4ms)[0m   [0;1mdescribe `invites`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW KEYS FROM `invites`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `job_posts`[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mdescribe `job_posts`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW KEYS FROM `job_posts`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `likes`[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mdescribe `likes`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW KEYS FROM `likes`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSHOW FIELDS FROM `links`[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mdescribe `links`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW KEYS FROM `links`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `memberships`[0m
+  [4;36;1mSQL (3.1ms)[0m   [0;1mdescribe `memberships`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW KEYS FROM `memberships`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSHOW FIELDS FROM `messages`[0m
+  [4;35;1mSQL (3.6ms)[0m   [0mdescribe `messages`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW KEYS FROM `messages`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `nav_items`[0m
+  [4;36;1mSQL (3.7ms)[0m   [0;1mdescribe `nav_items`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW KEYS FROM `nav_items`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `networks`[0m
+  [4;35;1mSQL (3.5ms)[0m   [0mdescribe `networks`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW KEYS FROM `networks`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mSQL (3.1ms)[0m   [0;1mdescribe `pages`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW KEYS FROM `pages`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `permissions`[0m
+  [4;35;1mSQL (3.2ms)[0m   [0mdescribe `permissions`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW KEYS FROM `permissions`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `photo_albums`[0m
+  [4;36;1mSQL (3.1ms)[0m   [0;1mdescribe `photo_albums`[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mSHOW KEYS FROM `photo_albums`[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mSQL (4.7ms)[0m   [0mdescribe `photos`[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mSHOW KEYS FROM `photos`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `profiles`[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mdescribe `profiles`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW KEYS FROM `profiles`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `projects`[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mdescribe `projects`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW KEYS FROM `projects`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `replies`[0m
+  [4;36;1mSQL (3.6ms)[0m   [0;1mdescribe `replies`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW KEYS FROM `replies`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `rss_feeds`[0m
+  [4;36;1mSQL (3.1ms)[0m   [0;1mdescribe `rss_feeds`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW KEYS FROM `rss_feeds`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mdescribe `sessions`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW KEYS FROM `sessions`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `states`[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mdescribe `states`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW KEYS FROM `states`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `status_posts`[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mdescribe `status_posts`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW KEYS FROM `status_posts`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `taggings`[0m
+  [4;36;1mSQL (3.6ms)[0m   [0;1mdescribe `taggings`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW KEYS FROM `taggings`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `tags`[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mdescribe `tags`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW KEYS FROM `tags`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `themes`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `themes`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW KEYS FROM `themes`[0m
+  [4;36;1mSQL (3.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (9.6ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (5.6ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `videos`[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mdescribe `videos`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW KEYS FROM `videos`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `wall_posts`[0m
+  [4;35;1mSQL (3.4ms)[0m   [0mdescribe `wall_posts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `wall_posts`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mSHOW FIELDS FROM `widget_layouts`[0m
+  [4;36;1mSQL (3.5ms)[0m   [0;1mdescribe `widget_layouts`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW KEYS FROM `widget_layouts`[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSHOW FIELDS FROM `widgets`[0m
+  [4;35;1mSQL (3.5ms)[0m   [0mdescribe `widgets`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSHOW KEYS FROM `widgets`[0m
