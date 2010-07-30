@@ -7,3 +7,17 @@ we're gonna go with
 
 http://www.kelvinluck.com/assets/jquery/datePicker/v2/demo/index.html
 
+
+We start with all days closed. So users must open a calendar date. 
+Unblocked calendar dates are specified by an Unblock object
+which has a user_id and a date for the start of that week, a bitarray.
+
+The bitarray has a bit for each day of the week, plus two for saturday. So we can treat it like an 8 day week. 
+So we just need an INT(8).
+
+Then all we need for named scope is to input a day, and output a condition that searches IN() + plus the target week. 
+
+That seems reasonable. 
+
+
+
