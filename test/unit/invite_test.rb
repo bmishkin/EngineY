@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: invites
+#
+#  id          :integer(4)      not null, primary key
+#  email       :string(255)
+#  user_id     :integer(4)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  message     :text
+#  invite_code :string(255)
+#  accepted    :boolean(1)
+#
+
 require 'test_helper'
 
 class InviteTest < ActiveSupport::TestCase

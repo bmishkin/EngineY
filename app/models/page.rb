@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: pages
+#
+#  id         :integer(4)      not null, primary key
+#  title      :string(255)
+#  permalink  :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  name       :string(255)
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

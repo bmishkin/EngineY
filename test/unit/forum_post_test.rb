@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: forum_posts
+#
+#  id             :integer(4)      not null, primary key
+#  user_id        :integer(4)
+#  title          :string(255)
+#  body           :text
+#  parent_id      :integer(4)
+#  forum_topic_id :integer(4)
+#  featured       :boolean(1)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  views          :integer(4)      default(0)
+#
+
 require 'test_helper'
 
 class ForumPostTest < ActiveSupport::TestCase

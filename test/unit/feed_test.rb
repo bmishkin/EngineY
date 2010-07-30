@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: feeds
+#
+#  id         :integer(4)      not null, primary key
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'test_helper'
 
 class FeedTest < ActiveSupport::TestCase

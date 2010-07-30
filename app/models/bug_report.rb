@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: bug_reports
+#
+#  id              :integer(4)      not null, primary key
+#  title           :string(255)
+#  browser         :string(255)
+#  user_id         :integer(4)
+#  description     :text
+#  module          :string(255)
+#  resolved        :boolean(1)      default(FALSE)
+#  comment         :text
+#  resolution_date :date
+#  priority        :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,3 +38,5 @@ class BugReport < ActiveRecord::Base
   
   
 end
+
+

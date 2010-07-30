@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: photo_albums
+#
+#  id          :integer(4)      not null, primary key
+#  created_at  :datetime
+#  updated_at  :datetime
+#  view_count  :integer(4)
+#  title       :string(255)
+#  description :text
+#  user_id     :integer(4)
+#
+
 require 'test_helper'
 
 class PhotoAlbumTest < ActiveSupport::TestCase

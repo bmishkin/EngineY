@@ -1,3 +1,24 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: blog_posts
+#
+#  id           :integer(4)      not null, primary key
+#  user_id      :integer(4)
+#  title        :string(255)
+#  body         :text
+#  parent_id    :integer(4)
+#  published    :boolean(1)
+#  featured     :boolean(1)
+#  summary      :text
+#  url          :string(255)
+#  published_at :datetime
+#  guid         :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  views        :integer(4)      default(0)
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

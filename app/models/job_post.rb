@@ -1,3 +1,22 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: job_posts
+#
+#  id           :integer(4)      not null, primary key
+#  job_title    :string(255)
+#  job_id       :string(255)
+#  company      :string(255)
+#  website      :string(255)
+#  contact_name :string(255)
+#  email        :string(255)
+#  description  :text
+#  featured     :boolean(1)
+#  end_date     :date
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

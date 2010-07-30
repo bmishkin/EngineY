@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id           :integer(4)      not null, primary key
+#  subject      :string(255)
+#  body         :text
+#  sender_id    :integer(4)
+#  recipient_id :integer(4)
+#  read         :boolean(1)      default(FALSE)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,3 +44,5 @@ class Message < ActiveRecord::Base
   belongs_to :recipient, :class_name => 'User', :foreign_key =>'recipient_id'
   
 end
+
+

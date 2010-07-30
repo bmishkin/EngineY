@@ -1,3 +1,18 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: invites
+#
+#  id          :integer(4)      not null, primary key
+#  email       :string(255)
+#  user_id     :integer(4)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  message     :text
+#  invite_code :string(255)
+#  accepted    :boolean(1)
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

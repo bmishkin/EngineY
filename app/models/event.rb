@@ -1,3 +1,26 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: events
+#
+#  id           :integer(4)      not null, primary key
+#  name         :string(255)
+#  user_id      :integer(4)
+#  photo_id     :integer(4)
+#  description  :text
+#  event_type   :string(255)
+#  start_time   :datetime
+#  end_time     :datetime
+#  location     :string(255)
+#  street       :string(255)
+#  city         :string(255)
+#  website      :string(255)
+#  phone        :string(255)
+#  organized_by :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

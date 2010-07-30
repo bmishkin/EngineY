@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id            :integer(4)      not null, primary key
+#  name          :string(255)
+#  description   :text
+#  photo_id      :integer(4)
+#  creator_id    :integer(4)
+#  featured      :boolean(1)
+#  announcements :text
+#  private       :boolean(1)      default(FALSE)
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 require 'test_helper'
 
 class GroupTest < ActiveSupport::TestCase

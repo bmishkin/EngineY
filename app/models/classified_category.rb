@@ -1,3 +1,14 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: classified_categories
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: html_contents
+#
+#  id         :integer(4)      not null, primary key
+#  title      :string(255)
+#  body       :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

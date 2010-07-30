@@ -1,3 +1,65 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                        :integer(4)      not null, primary key
+#  created_at                :datetime
+#  updated_at                :datetime
+#  login                     :string(255)
+#  email                     :string(255)
+#  email_hash                :string(255)
+#  first_name                :string(255)
+#  last_name                 :string(255)
+#  sex                       :string(255)
+#  city                      :string(255)
+#  state_id                  :integer(4)
+#  zip                       :string(255)
+#  country_id                :integer(4)
+#  phone                     :string(255)
+#  phone2                    :string(255)
+#  time_zone                 :string(255)     default("UTC")
+#  about_me                  :text
+#  organization              :string(255)
+#  skills                    :text
+#  occupation                :text
+#  featured                  :boolean(1)      default(FALSE)
+#  show_blog_posts_on_home   :boolean(1)      default(TRUE)
+#  use_gravatar              :boolean(1)      default(FALSE)
+#  website                   :string(255)
+#  blog                      :string(255)
+#  blog_feed                 :string(255)
+#  flickr                    :string(255)
+#  flickr_username           :string(255)
+#  linked_in_url             :string(255)
+#  twitter_id                :string(255)
+#  display_tweets            :boolean(1)      default(FALSE)
+#  aim_name                  :string(255)
+#  gtalk_name                :string(255)
+#  yahoo_messenger_name      :string(255)
+#  msn_name                  :string(255)
+#  youtube_username          :string(255)
+#  skype_name                :string(255)
+#  facebook_url              :string(255)
+#  facebook_id               :integer(4)
+#  resume_url                :string(255)
+#  company_url               :string(255)
+#  posts_count               :integer(4)      default(0)
+#  last_seen_at              :datetime
+#  login_count               :integer(4)      default(0)
+#  crypted_password          :string(40)
+#  salt                      :string(40)
+#  remember_token            :string(255)
+#  remember_token_expires_at :datetime
+#  activation_code           :string(40)
+#  activated_at              :datetime
+#  password_reset_code       :string(40)
+#  enabled                   :boolean(1)      default(TRUE)
+#  is_active                 :boolean(1)      default(FALSE)
+#  identity_url              :string(255)
+#  receive_emails            :boolean(1)      default(TRUE)
+#  api_key                   :string(40)      default("")
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
@@ -606,3 +668,5 @@ class User < ActiveRecord::Base
 
   
 end
+
+

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100707160333) do
+ActiveRecord::Schema.define(:version => 20100730194913) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -465,6 +465,12 @@ ActiveRecord::Schema.define(:version => 20100707160333) do
 
   create_table "themes", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "unblocks", :force => true do |t|
+    t.integer "user_id",                              :null => false
+    t.date    "weekdate",                             :null => false
+    t.integer "dayflags", :limit => 2, :default => 0, :null => false
   end
 
   create_table "users", :force => true do |t|

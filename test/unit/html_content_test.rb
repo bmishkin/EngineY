@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: html_contents
+#
+#  id         :integer(4)      not null, primary key
+#  title      :string(255)
+#  body       :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'test_helper'
 
 class HTMLContentTest < ActiveSupport::TestCase

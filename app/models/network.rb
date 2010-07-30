@@ -1,3 +1,19 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: networks
+#
+#  id           :integer(4)      not null, primary key
+#  name         :string(255)
+#  organization :string(255)
+#  website      :string(255)
+#  description  :text
+#  created_at   :datetime
+#  updated_at   :datetime
+#  url          :string(255)
+#  admin_email  :string(255)
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

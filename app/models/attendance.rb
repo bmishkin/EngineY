@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: attendances
+#
+#  id          :integer(4)      not null, primary key
+#  attendee_id :integer(4)
+#  event_id    :integer(4)
+#  status      :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

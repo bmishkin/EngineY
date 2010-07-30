@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: networks
+#
+#  id           :integer(4)      not null, primary key
+#  name         :string(255)
+#  organization :string(255)
+#  website      :string(255)
+#  description  :text
+#  created_at   :datetime
+#  updated_at   :datetime
+#  url          :string(255)
+#  admin_email  :string(255)
+#
+
 require 'test_helper'
 
 class NetworkTest < ActiveSupport::TestCase

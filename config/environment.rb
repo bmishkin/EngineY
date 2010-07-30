@@ -30,6 +30,10 @@ Rails::Initializer.run do |config|
   config.gem "aws-s3", :lib => "aws/s3"
   config.gem "jammit"
   
+  config.gem "fastercsv", :version => '=1.5.0' # used to import IOA memebers
+  
+  
+  
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
 
@@ -76,7 +80,8 @@ Rails::Initializer.run do |config|
   
  config.active_record.observers = :announcement_observer, :invite_observer, :user_observer, :message_observer, :wall_post_observer
  
- config.action_mailer.delivery_method = :smtp
+ # set in the environment file now
+ #config.action_mailer.delivery_method = :smtp
  
 end
 

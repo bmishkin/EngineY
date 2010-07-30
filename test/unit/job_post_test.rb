@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: job_posts
+#
+#  id           :integer(4)      not null, primary key
+#  job_title    :string(255)
+#  job_id       :string(255)
+#  company      :string(255)
+#  website      :string(255)
+#  contact_name :string(255)
+#  email        :string(255)
+#  description  :text
+#  featured     :boolean(1)
+#  end_date     :date
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 require 'test_helper'
 
 class JobPostTest < ActiveSupport::TestCase

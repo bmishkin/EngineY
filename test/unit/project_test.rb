@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id          :integer(4)      not null, primary key
+#  user_id     :integer(4)
+#  url         :string(255)
+#  name        :string(255)
+#  description :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require 'test_helper'
 
 class ProjectTest < ActiveSupport::TestCase

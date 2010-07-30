@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: permissions
+#
+#  id         :integer(4)      not null, primary key
+#  user_id    :integer(4)
+#  role_id    :integer(4)
+#  group_id   :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

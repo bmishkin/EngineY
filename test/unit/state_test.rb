@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: states
+#
+#  id           :integer(4)      not null, primary key
+#  name         :string(255)
+#  abbreviation :string(255)
+#  country_id   :integer(4)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 require 'test_helper'
 
 class StateTest < ActiveSupport::TestCase

@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: links
+#
+#  id         :integer(4)      not null, primary key
+#  user_id    :integer(4)
+#  title      :string(255)
+#  url        :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

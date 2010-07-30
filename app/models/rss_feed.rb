@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: rss_feeds
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  url        :string(255)
+#  user_id    :integer(4)
+#  is_blog    :boolean(1)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

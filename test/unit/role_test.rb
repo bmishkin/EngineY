@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: roles
+#
+#  id         :integer(4)      not null, primary key
+#  rolename   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'test_helper'
 
 class RoleTest < ActiveSupport::TestCase

@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: photo_albums
+#
+#  id          :integer(4)      not null, primary key
+#  created_at  :datetime
+#  updated_at  :datetime
+#  view_count  :integer(4)
+#  title       :string(255)
+#  description :text
+#  user_id     :integer(4)
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 20100730194913
+#
+# Table name: blog_mirrors
+#
+#  id         :integer(4)      not null, primary key
+#  url        :string(255)
+#  user_id    :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 #   Copyright 2009 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
